@@ -7,14 +7,20 @@ def clean_data(data: list) -> list:
     """
     cleaned_data = []
 
+    for player in data:
+        player_data = {"name": player["name"],
+                       "guardians": player["guardians"],
+                       "experience": convert_experience(player),
+                       "height": convert_height(player)
+                       }
+        cleaned_data.append(player_data)
     return cleaned_data
 
 
-def convert_height():
-    pass
+def convert_experience(player: dict) -> bool:
+    return player["experience"] == "YES"
 
 
-def convert_experience():
-    pass
-
+def convert_height(player: dict) -> int:
+    return int(player["height"].split()[0])
 
