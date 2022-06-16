@@ -19,19 +19,19 @@ def split_by_player_experience(players: list) -> (list, list):
     return experienced_players, inexperienced_players
 
 
-def create_balanced_teams(players: list) -> list:
-    balanced_teams = []
+def create_balanced_teams(players: list) -> dict:
+    balanced_teams = {}
     experienced_players, inexperienced_players = split_by_player_experience(players)
 
     for team in TEAMS:
-        balanced_teams.append({"team_name": team, "players": []})
+        balanced_teams[team] = []
 
     while experienced_players:
-        for team in balanced_teams:
-            team["players"].append(experienced_players.pop())
+        for team, team_players in balanced_teams.items():
+            team_players.append(experienced_players.pop())
 
     while inexperienced_players:
-        for team in balanced_teams:
-            team["players"].append(inexperienced_players.pop())
+        for team, team_players in balanced_teams.items():
+            team_players.append(inexperienced_players.pop())
 
     return balanced_teams
