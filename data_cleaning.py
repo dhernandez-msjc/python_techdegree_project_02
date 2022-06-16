@@ -9,7 +9,7 @@ def clean_data(data: list) -> list:
 
     for player in data:
         player_data = {"name": player["name"],
-                       "guardians": player["guardians"],
+                       "guardians": clean_guardians(player),
                        "experience": convert_experience(player),
                        "height": convert_height(player)
                        }
@@ -17,10 +17,29 @@ def clean_data(data: list) -> list:
     return cleaned_data
 
 
+def clean_guardians(player: dict) -> list:
+    """
+    Cleans guardian list by removing " and "
+    :param player: The player data to be cleaned
+    :return: names of guardians as a list of strings
+    """
+    return player["guardians"].split(" and ")
+
+
 def convert_experience(player: dict) -> bool:
+    """
+    Converts the experience field of the player data
+    into a boolean value.
+    :param player: The player data to be cleaned
+    :return: boolean value representing experience
+    """
     return player["experience"] == "YES"
 
 
 def convert_height(player: dict) -> int:
+    """
+    Converts player's height from a string into an int.
+    :param player: The player data to be cleaned
+    :return: the player's height in inches as an int
+    """
     return int(player["height"].split()[0])
-
