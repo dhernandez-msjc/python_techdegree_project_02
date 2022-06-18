@@ -8,6 +8,13 @@ PLAYERS_PER_TEAM = TOTAL_PLAYERS // NUMBER_OF_TEAMS
 
 
 def split_by_player_experience(players: list) -> (list, list):
+    """
+    Splits the players into two sets of lists, experienced and
+    the other for inexperienced players.
+    :param players: The players list to analyze.
+    :return: tuple of lists representing the list of experienced
+    and inexperienced players.
+    """
     experienced_players = []
     inexperienced_players = []
 
@@ -20,6 +27,11 @@ def split_by_player_experience(players: list) -> (list, list):
 
 
 def create_balanced_teams(players: list) -> dict:
+    """
+    
+    :param players:
+    :return:
+    """
     balanced_teams = {}
     experienced_players, inexperienced_players = split_by_player_experience(players)
 
