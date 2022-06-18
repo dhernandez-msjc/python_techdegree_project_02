@@ -28,9 +28,10 @@ def split_by_player_experience(players: list) -> (list, list):
 
 def create_balanced_teams(players: list) -> dict:
     """
-    
-    :param players:
-    :return:
+    Takes in a list of players and creates a balanced team of experienced and
+    inexperienced players.
+    :param players: the list of players to create a balanced team from.
+    :return: A dictionary of balanced teams.
     """
     balanced_teams = {}
     experienced_players, inexperienced_players = split_by_player_experience(players)
