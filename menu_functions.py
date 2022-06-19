@@ -10,6 +10,7 @@ def display_main_menu() -> None:
     print("2. Exit")
     print()
 
+
 def calculate_average_height(players: dict) -> float:
     average_height = 0
     for player_type in ['experienced_players', 'inexperienced_players']:
