@@ -2,7 +2,7 @@ from team_balancing import PLAYERS_PER_TEAM
 
 
 def display_title() -> None:
-    pass
+    print("BASKETBALL TEAM STATS TOOL")
 
 
 def display_main_menu() -> None:
