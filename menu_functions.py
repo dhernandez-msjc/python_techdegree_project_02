@@ -2,12 +2,13 @@ from team_balancing import PLAYERS_PER_TEAM
 
 
 def display_title() -> None:
-    print("BASKETBALL TEAM STATS TOOL")
+    print("BASKETBALL TEAM STATS TOOL\n")
 
 
 def display_main_menu() -> None:
-    pass
-
+    print("1. Display Team Stats")
+    print("2. Exit")
+    print()
 
 def calculate_average_height(players: dict) -> float:
     average_height = 0
@@ -29,6 +30,12 @@ def get_player_names(player_type: str, players: dict) -> str:
 
 
 def get_player_guardians(player_type: str, players: dict) -> str:
+    """
+
+    :param player_type:
+    :param players:
+    :return:
+    """
     guardians = []
     for player in players[player_type]:
         for guardian in player['guardians']:
@@ -58,5 +65,29 @@ def display_team_info(team: str, players: dict) -> None:
     print(f"  Inexperienced: {get_player_guardians('inexperienced_players', players)}\n")
 
 
-def run_menu() -> None:
-    pass
+def run_menu(team_data: dict) -> None:
+    display_title()
+
+    while True:
+        display_main_menu()
+        user_input = int(input("Enter Menu Selection:  "))
+
+        if user_input == 1:
+            print("1. Panthers")
+            print("2. Bandits")
+            print("3. Warriors")
+
+            team = user_input = int(input("Enter Team Selection:  "))
+            if user_input == 1:
+                team = "Panthers"
+            elif user_input == 2:
+                team = "Bandits"
+            elif user_input == 3:
+                team = "Warriors"
+
+            display_team_info(team, team_data[team])
+            input("Press Enter to continue ...")
+
+        elif user_input == 2:
+            break
+

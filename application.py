@@ -8,10 +8,10 @@ def main():
     cleaned_data = clean_data(constants.PLAYERS)
     balanced_teams = create_balanced_teams(cleaned_data)
 
-
-    menu_functions.display_title()
-    team_name = "Warriors"
-    menu_functions.display_team_info(team_name, balanced_teams[team_name])
+    menu_functions.run_menu(balanced_teams)
+    # menu_functions.display_title()
+    # team_name = "Warriors"
+    # menu_functions.display_team_info(team_name, balanced_teams[team_name])
     # menu_functions.display_team_info(balanced_teams['Bandits'])
 
 
