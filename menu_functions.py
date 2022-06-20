@@ -110,7 +110,7 @@ def display_team_info(team_name: str, players: dict) -> None:
 def validate_user_input(prompt: str, iterable_list: list) -> int:
     """
     Validates the user input given a prompt for the user and a list to determine
-    bounds of input from index 1 to the length of the iterable list. 
+    bounds of input from index 1 to the length of the iterable list.
     :param prompt:
     :param iterable_list:
     :return:
