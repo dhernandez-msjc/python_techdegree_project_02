@@ -69,8 +69,8 @@ def get_player_guardians(player_experience: str, players: dict) -> str:
     Concatenates the list of player guardians of a given player
     experience type
     :param player_experience: experienced, or inexperienced players.
-    :param players: 
-    :return:
+    :param players: dictionary of players to extract guardians from.
+    :return: string representing concatenation of player guardians.
     """
     guardians = []
     for player in players[player_experience]:
@@ -79,18 +79,18 @@ def get_player_guardians(player_experience: str, players: dict) -> str:
     return ", ".join(guardians)
 
 
-def display_team_info(team: str, players: dict) -> None:
+def display_team_info(team_name: str, players: dict) -> None:
     """
-
-    :param team:
-    :param players:
-    :return:
+    Displays selected team information from a given dictionary of team players.
+    :param team_name: String representing the name of the team.
+    :param players: Dictionary of team players.
+    :return: None
     """
     number_of_experienced = len(players['experienced_players'])
     number_of_inexperienced = len(players['inexperienced_players'])
 
     print("=========================")
-    print(f"Team: {team}")
+    print(f"Team: {team_name}")
     print("=========================")
     print(f"Total players      : {number_of_experienced + number_of_inexperienced:4.0f}")
     print(f"Total Experienced  : {number_of_experienced:4.0f}")
@@ -107,16 +107,21 @@ def display_team_info(team: str, players: dict) -> None:
     print(f"  Inexperienced: {get_player_guardians('inexperienced_players', players)}\n")
 
 
+def validated_user_input() -> bool:
+    pass
+
+
 def run_menu(team_data: dict) -> None:
     """
-
-    :param team_data:
-    :return:
+    Runs main menu program.
+    :param team_data: dictionary of team data.
+    :return: None
     """
     display_title()
 
     while True:
         display_main_menu()
+        # TODO needs to have error handling
         user_input = int(input("Enter Menu Selection:  "))
         print()
 
