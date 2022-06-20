@@ -43,36 +43,37 @@ def calculate_average_height(players: dict) -> float:
     """
     Calculates the average height of all players on a team and returns
     the value as a float.
-    :param players:
-    :return:
+    :param players: dictionary of players to extract heights from.
+    :return: a float representing the average height of players on team.
     """
     average_height = 0
-    for player_type in ['experienced_players', 'inexperienced_players']:
-        for player in players[player_type]:
+    for player_experience in ['experienced_players', 'inexperienced_players']:
+        for player in players[player_experience]:
             average_height += player['height']
     return average_height / PLAYERS_PER_TEAM
 
 
-def get_player_names(player_type: str, players: dict) -> str:
+def get_player_names(player_experience: str, players: dict) -> str:
     """
     Joins a list of player names of specified player type (in-/experienced),
     and returns information as a string.
-    :param player_type: experienced, or inexperienced players.
+    :param player_experience: experienced, or inexperienced players.
     :param players: the dictionary of players to extract names from.
     :return: string representing concatenation of player names.
     """
-    return ', '.join([player['name'] for player in players[player_type]])
+    return ', '.join([player['name'] for player in players[player_experience]])
 
 
-def get_player_guardians(player_type: str, players: dict) -> str:
+def get_player_guardians(player_experience: str, players: dict) -> str:
     """
-
-    :param player_type:
-    :param players:
+    Concatenates the list of player guardians of a given player
+    experience type
+    :param player_experience: experienced, or inexperienced players.
+    :param players: 
     :return:
     """
     guardians = []
-    for player in players[player_type]:
+    for player in players[player_experience]:
         for guardian in player['guardians']:
             guardians.append(guardian)
     return ", ".join(guardians)
