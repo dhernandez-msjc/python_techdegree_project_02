@@ -5,6 +5,10 @@ MENU_OPTIONS = ["Display Team Stats", "Exit"]
 
 
 def display_title() -> None:
+    """
+    Displays the main title in a clean format
+    :return: None
+    """
     TITLE = "BASKETBALL TEAM STATS TOOL"
     BORDER = "=" * (2 * len(TITLE))
 
@@ -14,19 +18,34 @@ def display_title() -> None:
 
 
 def display_main_menu() -> None:
+    """
+    Displays the main menu in a clean format.
+    :return: None
+    """
+    print("~~~~~~~~~~~~~~~~~~~~~~~")
     for index, menu_item in enumerate(MENU_OPTIONS, 1):
         print(f'{index}. {menu_item}')
+    print("~~~~~~~~~~~~~~~~~~~~~~~")
 
 
 def display_team_options() -> None:
+    """
+    Display Team Selection Options in a clean format.
+    :return: None
+    """
     print("~~~~~~~~~~~~~~~~~~~~~~~")
     for index, team_name in enumerate(TEAMS, 1):
         print(f'{index}. {team_name}')
     print("~~~~~~~~~~~~~~~~~~~~~~~")
 
 
-
 def calculate_average_height(players: dict) -> float:
+    """
+    Calculates the average height of all players on a team and returns
+    the value as a float.
+    :param players:
+    :return:
+    """
     average_height = 0
     for player_type in ['experienced_players', 'inexperienced_players']:
         for player in players[player_type]:
@@ -60,6 +79,12 @@ def get_player_guardians(player_type: str, players: dict) -> str:
 
 
 def display_team_info(team: str, players: dict) -> None:
+    """
+
+    :param team:
+    :param players:
+    :return:
+    """
     number_of_experienced = len(players['experienced_players'])
     number_of_inexperienced = len(players['inexperienced_players'])
 
@@ -82,12 +107,15 @@ def display_team_info(team: str, players: dict) -> None:
 
 
 def run_menu(team_data: dict) -> None:
+    """
+
+    :param team_data:
+    :return:
+    """
     display_title()
 
     while True:
-        print("~~~~~~~~~~~~~~~~~~~~~~~")
         display_main_menu()
-        print("~~~~~~~~~~~~~~~~~~~~~~~")
         user_input = int(input("Enter Menu Selection:  "))
         print()
 
