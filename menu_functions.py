@@ -1,14 +1,29 @@
+from constants import TEAMS
 from team_balancing import PLAYERS_PER_TEAM
+
+MENU_OPTIONS = ["Display Team Stats", "Exit"]
 
 
 def display_title() -> None:
-    print("BASKETBALL TEAM STATS TOOL\n")
+    TITLE = "BASKETBALL TEAM STATS TOOL"
+    BORDER = "=" * (2 * len(TITLE))
+
+    print(BORDER)
+    print(f"{TITLE:^{len(BORDER)}}")
+    print(BORDER)
 
 
 def display_main_menu() -> None:
-    print("1. Display Team Stats")
-    print("2. Exit")
-    print()
+    for index, menu_item in enumerate(MENU_OPTIONS, 1):
+        print(f'{index}. {menu_item}')
+
+
+def display_team_options() -> None:
+    print("~~~~~~~~~~~~~~~~~~~~~~~")
+    for index, team_name in enumerate(TEAMS, 1):
+        print(f'{index}. {team_name}')
+    print("~~~~~~~~~~~~~~~~~~~~~~~")
+
 
 
 def calculate_average_height(players: dict) -> float:
@@ -70,15 +85,17 @@ def run_menu(team_data: dict) -> None:
     display_title()
 
     while True:
+        print("~~~~~~~~~~~~~~~~~~~~~~~")
         display_main_menu()
+        print("~~~~~~~~~~~~~~~~~~~~~~~")
         user_input = int(input("Enter Menu Selection:  "))
+        print()
 
         if user_input == 1:
-            print("1. Panthers")
-            print("2. Bandits")
-            print("3. Warriors")
-
+            display_team_options()
             team = user_input = int(input("Enter Team Selection:  "))
+            print()
+
             if user_input == 1:
                 team = "Panthers"
             elif user_input == 2:
