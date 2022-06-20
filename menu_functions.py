@@ -107,8 +107,24 @@ def display_team_info(team_name: str, players: dict) -> None:
     print(f"  Inexperienced: {get_player_guardians('inexperienced_players', players)}\n")
 
 
-def validated_user_input() -> bool:
-    pass
+def validate_user_input(prompt: str, iterable_list: list) -> int:
+    """
+    Validates the user input given a prompt for the user and a list to determine
+    bounds of input from index 1 to the length of the iterable list. 
+    :param prompt:
+    :param iterable_list:
+    :return:
+    """
+    while True:
+        try:
+            user_input = int(input(prompt))
+            print()
+        except ValueError:
+            print(f"Please enter a value between 1 and {len(iterable_list)}.\n")
+        else:
+            if 1 <= user_input <= len(iterable_list):
+                return user_input
+            print(f"Please enter a value between 1 and {len(iterable_list)}.\n")
 
 
 def run_menu(team_data: dict) -> None:
@@ -121,25 +137,22 @@ def run_menu(team_data: dict) -> None:
 
     while True:
         display_main_menu()
-        # TODO needs to have error handling
-        user_input = int(input("Enter Menu Selection:  "))
-        print()
+        menu_selection = validate_user_input("Enter Menu Selection: ", MENU_OPTIONS)
 
-        if user_input == 1:
+        if menu_selection == 1:
             display_team_options()
-            team = user_input = int(input("Enter Team Selection:  "))
-            print()
+            selected_team = validate_user_input("Enter Team Selection: ", TEAMS)
 
-            if user_input == 1:
-                team = "Panthers"
-            elif user_input == 2:
-                team = "Bandits"
-            elif user_input == 3:
-                team = "Warriors"
+            if selected_team == 1:
+                selected_team = "Panthers"
+            elif selected_team == 2:
+                selected_team = "Bandits"
+            elif selected_team == 3:
+                selected_team = "Warriors"
 
-            display_team_info(team, team_data[team])
+            display_team_info(selected_team, team_data[selected_team])
             input("Press Enter to continue ...")
 
-        elif user_input == 2:
+        elif menu_selection == 2:
             break
 
