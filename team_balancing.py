@@ -1,5 +1,4 @@
-from constants import TEAMS
-from constants import PLAYERS
+from constants import PLAYERS, TEAMS
 
 # Determine the number of teams, players and players per team.
 NUMBER_OF_TEAMS = len(TEAMS)
